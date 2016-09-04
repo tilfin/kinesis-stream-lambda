@@ -1,0 +1,20 @@
+[
+  {
+    "name": "info-log",
+    "hostname": "tk2-218-18796",
+    "pid": 25551,
+    "level": 30,
+    "counter": 11,
+    "msg": "This is a info message",
+    "v": 0
+  },
+  {
+    "name": "error-log",
+    "hostname": "tk2-218-18796",
+    "pid": 25551,
+    "level": 50,
+    "counter": 12,
+    "msg": "This is a error message",
+    "v": 0
+  }
+]

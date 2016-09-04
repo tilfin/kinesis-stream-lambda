@@ -1,0 +1,15 @@
+[
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 25551,
+    "level": 20,
+    "counter": 5,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  }
+]

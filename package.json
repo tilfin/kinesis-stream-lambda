@@ -1,0 +1,26 @@
+{
+  "name": "kinesis-lambda-stream",
+  "version": "0.0.1",
+  "description": "Readable stream in Lambda for Kinesis Stream",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "keywords": [
+    "kinesis",
+    "stream",
+    "lambda"
+  ],
+  "author": "Toshimitsu Takahashi",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^3.0.2",
+    "through2": "^2.0.1"
+  },
+  "devDependencies": {
+    "aws-kinesis-agg": "^2.2.2",
+    "chai": "^3.5.0",
+    "event-stream": "^3.3.4",
+    "mocha": "^3.0.2"
+  }
+}

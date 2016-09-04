@@ -1,0 +1,120 @@
+[
+  {
+    "name": "info-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 30,
+    "counter": 11,
+    "msg": "This is a info message",
+    "v": 0
+  },
+  {
+    "name": "info-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 30,
+    "counter": 11,
+    "msg": "This is a info message",
+    "v": 0
+  },
+  {
+    "name": "error-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 50,
+    "counter": 12,
+    "msg": "This is a error message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 3,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 1,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 4,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 2,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 3,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 4,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 5,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  }
+]

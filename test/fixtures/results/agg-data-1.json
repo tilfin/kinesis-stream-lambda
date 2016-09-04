@@ -1,0 +1,67 @@
+[
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 5,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 6,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 7,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 6,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  },
+  {
+    "name": "debug-log",
+    "hostname": "tk2-218-18796",
+    "pid": 24268,
+    "level": 20,
+    "counter": 7,
+    "data": {
+      "foo": "biz",
+      "bar": false
+    },
+    "msg": "This is a debug message",
+    "v": 0
+  }
+]
