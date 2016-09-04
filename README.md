@@ -1,4 +1,8 @@
-# kinesis-stream-lambda
+kinesis-stream-lambda
+=====================
+
+[![NPM Version][npm-image]][npm-url]
+[![Build Status](https://travis-ci.org/tilfin/kinesis-stream-lambda.svg?branch=master)](https://travis-ci.org/tilfin/kinesis-stream-lambda)
 
 ## How to install
 
@@ -32,3 +36,10 @@ exports.handler = function(event, context) {
   });
 }
 ```
+
+## License
+
+  [MIT](LICENSE)
+
+[npm-image]: https://img.shields.io/npm/v/kinesis-stream-lambda.svg
+[npm-url]: https://npmjs.org/package/kinesis-stream-lambda

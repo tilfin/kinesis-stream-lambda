@@ -1,6 +1,6 @@
 {
   "name": "kinesis-lambda-stream",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Readable stream in Lambda for Kinesis Stream",
   "main": "lib/main.js",
   "scripts": {
@@ -13,6 +13,10 @@
   ],
   "author": "Toshimitsu Takahashi",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tilfin/kinesis-lambda-stream"
+  },
   "dependencies": {
     "mocha": "^3.0.2",
     "through2": "^2.0.1"
