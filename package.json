@@ -1,8 +1,8 @@
 {
-  "name": "kinesis-lambda-stream",
-  "version": "0.1.0",
+  "name": "kinesis-stream-lambda",
+  "version": "0.1.1",
   "description": "Readable stream in Lambda for Kinesis Stream",
-  "main": "lib/main.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha test/test.js"
   },
@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tilfin/kinesis-lambda-stream"
+    "url": "https://github.com/tilfin/kinesis-stream-lambda"
   },
   "dependencies": {
     "mocha": "^3.0.2",
