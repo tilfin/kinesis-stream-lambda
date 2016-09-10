@@ -4,8 +4,8 @@
   "description": "Readable stream in Lambda for Kinesis Stream",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha test/test.js",
-    "coverage": "./node_modules/.bin/istanbul cover _mocha -r test/test.js"
+    "test": "mocha test/*.test.js",
+    "coverage": "./node_modules/.bin/istanbul cover _mocha -r test/*.test.js"
   },
   "keywords": [
     "kinesis",
