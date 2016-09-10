@@ -9,7 +9,7 @@ const KinesisLambda = require('../lib');
 
 describe('KLReadStream', () => {
   context('normal mode', () => {
-    it('read one record', (done) => {
+    it('reads one record', (done) => {
       const event = require('./fixtures/events/data-1');
       const readStream = KinesisLambda.reader(event);
       const dataList = require('./fixtures/results/data-1');
@@ -26,7 +26,7 @@ describe('KLReadStream', () => {
         });
     });
 
-    it('read two records', (done) => {
+    it('reads two records', (done) => {
       const event = require('./fixtures/events/data-2');
       const readStream = KinesisLambda.reader(event);
       const dataList = require('./fixtures/results/data-2');
@@ -45,7 +45,7 @@ describe('KLReadStream', () => {
 
     const data3 = require('./fixtures/results/data-3');
 
-    it('read one record with expanding array', (done) => {
+    it('reads one record with expanding array', (done) => {
       const event = require('./fixtures/events/data-3');
       const readStream = KinesisLambda.reader(event);
       const dataList = data3.concat();
@@ -62,7 +62,7 @@ describe('KLReadStream', () => {
         });
     });
 
-    it('read one record with expanding array and counting by 2', (done) => {
+    it('reads one record with expanding array and counting by 2', (done) => {
       const event = require('./fixtures/events/data-3');
       const readStream = KinesisLambda.reader(event);
       const dataList = data3.concat();
@@ -85,7 +85,7 @@ describe('KLReadStream', () => {
     const aggDate1 = require('./fixtures/results/agg-data-1');
     const aggDate2 = require('./fixtures/results/agg-data-2');
 
-    it('read one record', (done) => {
+    it('reads one record', (done) => {
       const event = require('./fixtures/events/agg-data-1');
       const readStream = KinesisLambda.reader(event, { isAgg: true });
       const dataList = aggDate1.concat();
@@ -102,7 +102,7 @@ describe('KLReadStream', () => {
         });
     });
 
-    it('read two records', (done) => {
+    it('reads two records', (done) => {
       const event = require('./fixtures/events/agg-data-2');
       const readStream = KinesisLambda.reader(event, { isAgg: true });
       const dataList = aggDate2.concat();
@@ -119,7 +119,7 @@ describe('KLReadStream', () => {
         });
     });
 
-    it('read one records with counting by 3 items', (done) => {
+    it('reads one records with counting by 3 items', (done) => {
       const event = require('./fixtures/events/agg-data-1');
       const readStream = KinesisLambda.reader(event, { isAgg: true });
       const dataList = aggDate1.concat();
@@ -137,7 +137,7 @@ describe('KLReadStream', () => {
         });
     });
 
-    it('read two records with counting by 4 items', (done) => {
+    it('reads two records with counting by 4 items', (done) => {
       const event = require('./fixtures/events/agg-data-2');
       const readStream = KinesisLambda.reader(event, { isAgg: true });
       const dataList = aggDate2.concat();
@@ -153,6 +153,25 @@ describe('KLReadStream', () => {
           assert.isOk(true);
           done();
         });
+    });
+  });
+
+  context('data is invalid JSON format', () => {
+    it('catches an syntax error', (done) => {
+      const event = require('./fixtures/events/data-invalid-json');
+      const readStream = KinesisLambda.reader(event);
+
+      const jsonStream = KinesisLambda.parseJSON();
+      jsonStream.on('error', function(err) {
+        assert.instanceOf(err, SyntaxError);
+        done();
+      });
+
+      readStream
+        .pipe(jsonStream)
+        .pipe(es.map(function(data, callback) {
+          callback(null, data)
+        }));
     });
   });
 });

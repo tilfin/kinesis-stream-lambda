@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "kinesis": {
+                "kinesisSchemaVersion": "1.0",
+                "partitionKey": "485bd0f3c7f8b6ec3ddc6ada18abcf8d",
+                "sequenceNumber": "49565441425403787852263465772329791873704550161163747330",
+                "data": "eyJpZCI6MSwidmFsdWUiOl9ffQo=",
+                "approximateArrivalTimestamp": 1473002069.264
+            },
+            "eventSource": "aws:kinesis",
+            "eventVersion": "1.0",
+            "eventID": "shardId-000000000000:49565441425403787852263465772329791873704550161163747330",
+            "eventName": "aws:kinesis:record",
+            "invokeIdentityArn": "arn:aws:iam::986450800000:role/lambda_basic_execution",
+            "awsRegion": "ap-northeast-1",
+            "eventSourceARN": "arn:aws:kinesis:ap-northeast-1:986450800000:stream/kpl-stream"
+        }
+    ]
+}

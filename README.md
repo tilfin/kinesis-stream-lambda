@@ -29,6 +29,10 @@ exports.handler = function(event, context) {
     context.done();
   });
 
+  stream.on('error', function(err) {
+    context.fail(err);
+  });
+
   stream
   .pipe(KSL.parseJSON({ expandArray: false }))
   .pipe(es.map(function(data, callback) {
