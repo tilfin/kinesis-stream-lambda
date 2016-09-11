@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "kinesis": {
+                "kinesisSchemaVersion": "1.0",
+                "partitionKey": "a",
+                "sequenceNumber": "49565441425403787852263465772251211695429557620804943874",
+                "data": "84mawgogMWRiYjgxMGFhNjQwYTRjYzRkNDM3ZjFjOTk1ZDE5MDkKIDM4OGE1YjExYjFhNDA4ZTNiNWRmOGI4YTVhY2MzMGM5CiBlYzZmODc3MmNjYjQyMzM0NmFkYWJhNjE1ZTc4N2RmNwogODQzMDRjN2RhNjE5MmJmNDAxYmI0YTNkOTZkNGUyZGYKIDllYjUzNzljNGNjNjM4YmU5Nzc0NGEzYjhiZjUxOGI3GnsIABp3eyJuYW1lIjoiaW5mby1sb2ciLCJob3N0bmFtZSI6InRrMi0yMTgtMTg3OTYiLCJwaWQiOjI0MjY4LCJsZXZlbCI6MzAsImNvdW50ZXIiOjExLCJtc2ciOiJUaGlzIGlzIGEgaW5mbyBtZXNzYWdlIiwidiI6MH0aewgBGnd7Im5hbWUiOiJpbmZvLWxvZyIsImhvc3RuYW1lIjoidGsyLTIxOC0xODc5NiIsInBpZCI6MjQyNjgsImxldmVsIjozMCwiY291bnRlciI6MTEsIm1zZyI6IlRoaXMgaXMgYSBpbmZvIG1lc3NhZ2UiLCJ2IjowfRp9CAIaeXsibmFtZSI6ImVycm9yLWxvZyIsImhvc3RuYW1lIjoidGsyLTIxOC0xODc5NiIsInBpZCI6MjQyNjgsImxldmVsIjo1MCwiY291bnRlciI6MTIsIm1zZyI6IlRoaXMgaXMgYSBlcnJvciBtZXNzYWdlIiwidiI6MH0angEIAxqZAXsibmFtZSI6ImRlYnVnLWxvZyIsImhvc3RuYW1lIjoidGsyLTIxOC0xODc5NiIsInBpZCI6MjQyNjgsImxldmVsIjoyMCwiY291bnRlciI6MywiZGF0YSI6eyJmb28iOiJiaXoiLCJiYXIiOmZhbHNlfSwibXNnIjoiVGhpcyBpcyBhIGRlYnVnIG1lc3NhZ2UiLCJ2IjowfRqeAQgEGpkBeyJuYW1lIjoiZGVidWctbG9nIiwiaG9zdG5hbWUiOiJ0azItMjE4LTE4Nzk2IiwicGlkIjoyNDI2OCwibGV2ZWwiOjIwLCJjb3VudGVyIjoxLCJkYXRhIjp7ImZvbyI6ImJpeiIsImJhciI6ZmFsc2V9LCJtc2ciOiJUaGlzIGlzIGEgZGVidWcgbWVzc2FnZSIsInYiOjB99KaxOTkRznQJVnwdxryJ5$==",
+                "approximateArrivalTimestamp": 1473001463.638
+            },
+            "eventSource": "aws:kinesis",
+            "eventVersion": "1.0",
+            "eventID": "shardId-000000000000:49565441425403787852263465772251211695429557620804943874",
+            "eventName": "aws:kinesis:record",
+            "invokeIdentityArn": "arn:aws:iam::986450800000:role/lambda_basic_execution",
+            "awsRegion": "ap-northeast-1",
+            "eventSourceARN": "arn:aws:kinesis:ap-northeast-1:986450800000:stream/kpl-stream"
+        }
+    ]
+}
