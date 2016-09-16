@@ -2,13 +2,14 @@
 
 const fs = require('fs');
 const es = require('event-stream');
+const through2 = require('through2');
 const chai = require('chai');
 const assert = chai.assert;
 
 const JSONTransform = require('../lib/json_transform');
 
 
-describe('KinesisLambda.parseJSON', () => {
+describe('JSONTransform', () => {
   context('passed valid JSON', () => {
     it('raises finish event', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/valid_json.txt');
@@ -45,6 +46,36 @@ describe('KinesisLambda.parseJSON', () => {
       });
 
       readStream.pipe(jsonStream).pipe(writeStream);
+    });
+  });
+
+  context('highWaterMark is less than item count of 1 JSON line', () => {
+    it('reads rightly', (done) => {
+      const readStream = fs.createReadStream(__dirname + '/fixtures/data/data_json.txt');
+      const jsonStream = JSONTransform({ highWaterMark: 7, expandArray: true, countBy: 1 })
+        .on('error', function(err) {
+          assert.ifError(err);
+          done();
+        });
+
+      let idValSum = 0;
+      const nextStream = through2.obj({ highWaterMark: 1 },
+        function(data, enc, cb) {
+          idValSum += data.id;
+          this.push(data);
+          cb();
+        },
+        function(cb){
+          assert.equal(idValSum, 45); // (1 + 9) * 9 / 2
+          cb();
+        });
+
+      const writeStream = es.writeArray(function (err, array) {
+        assert.equal(array.length, 9);
+        done();
+      });
+
+      readStream.pipe(jsonStream).pipe(nextStream).pipe(writeStream);
     });
   });
 
