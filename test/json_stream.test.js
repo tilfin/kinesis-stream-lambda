@@ -13,7 +13,7 @@ describe('JSONTransform', () => {
   context('passed valid JSON', () => {
     it('raises finish event', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/valid_json.txt');
-      const jsonStream = JSONTransform()
+      const jsonStream = new JSONTransform()
         .on('finish', function() {
           assert.isOk(true);
           done();
@@ -30,7 +30,7 @@ describe('JSONTransform', () => {
   context('passed 9 items JSON with count by 2 and expanding array', () => {
     it('flush 5 items', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/data_json.txt');
-      const jsonStream = JSONTransform({ expandArray: true, countBy: 2 })
+      const jsonStream = new JSONTransform({ expandArray: true, countBy: 2 })
         .on('error', function(err) {
           assert.ifError(err);
           done();
@@ -52,7 +52,7 @@ describe('JSONTransform', () => {
   context('highWaterMark is less than item count of 1 JSON line', () => {
     it('reads rightly', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/data_json.txt');
-      const jsonStream = JSONTransform({ highWaterMark: 7, expandArray: true, countBy: 1 })
+      const jsonStream = new JSONTransform({ highWaterMark: 7, expandArray: true, countBy: 1 })
         .on('error', function(err) {
           assert.ifError(err);
           done();
@@ -82,7 +82,7 @@ describe('JSONTransform', () => {
   context('passed invalid JSON', () => {
     it('raises error event', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/invalid_json.txt');
-      const jsonStream = JSONTransform()
+      const jsonStream = new JSONTransform()
         .on('finish', function() {
           assert.isOk(false);
           done();
