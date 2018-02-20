@@ -79,6 +79,27 @@ describe('JSONTransform', () => {
     });
   });
 
+  context('passed multiline JSON', () => {
+    const sharedExamples = function(highWaterMark, errMsg) {
+      it(`flush valid items through '${errMsg}'`, (done) => {
+        const readStream = fs.createReadStream(__dirname + '/fixtures/data/multiline_json.txt', { highWaterMark });
+        const jsonStream = new JSONTransform()
+        const writeStream = es.writeArray(function (err, array) {
+          assert.deepEqual(array[0], { color: "red", value: "#f00" });
+          assert.deepEqual(array[1], { color: "green", value: "#0f0" });
+          assert.deepEqual(array[2], { color: "blue", value: "#00f" });
+          done();
+        });
+
+        readStream.pipe(jsonStream).pipe(writeStream);
+      });
+    }
+
+    sharedExamples(4, 'Unexpected token A in JSON at position');
+    sharedExamples(25, 'Unexpected end of JSON input');
+    sharedExamples(36, 'Unexpected token { in JSON at position');
+  });
+
   context('passed invalid JSON', () => {
     it('raises error event', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/invalid_json.txt');
