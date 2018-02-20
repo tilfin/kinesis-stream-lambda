@@ -2,6 +2,7 @@ kinesis-stream-lambda
 =====================
 
 [![NPM Version][npm-image]][npm-url]
+[![Node](https://img.shields.io/node/v/kinesis-stream-lambda.svg)]()
 [![Build Status](https://travis-ci.org/tilfin/kinesis-stream-lambda.svg?branch=master)](https://travis-ci.org/tilfin/kinesis-stream-lambda)
 [![Coverage Status](https://coveralls.io/repos/github/tilfin/kinesis-stream-lambda/badge.svg?branch=master)](https://coveralls.io/github/tilfin/kinesis-stream-lambda?branch=master)
 
@@ -10,7 +11,7 @@ kinesis-stream-lambda
 * Easily reads a Lambda event of Kinesis Stream as a stream handling the chunk as Buffer
 * Supports KPL aggregation (set opts.isAgg true)
 * Provides KSL.parseJSON transform to handle items expanded array data in one record (set opts.expandArray true)
-* Node.js 4.3 or Later
+* Node.js 6.10 or Later
 
 ## How to install
 
