@@ -1,6 +1,6 @@
 {
   "name": "kinesis-stream-lambda",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Readable stream in Lambda for Kinesis Stream",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "aws-kinesis-agg": "^2.2.2",
     "chai": "^3.5.0",
     "coveralls": "^2.11.12",
-    "event-stream": "^3.3.4",
+    "event-stream": "=3.3.4",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
     "mocha-lcov-reporter": "^1.2.0",
