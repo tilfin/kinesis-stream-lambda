@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
+
+const StreamUtils = require('@tilfin/stream-utils')
+const { assert } = require('chai')
 
 const fs = require('fs');
-const es = require('event-stream');
 const through2 = require('through2');
-const chai = require('chai');
-const assert = chai.assert;
 
 const JSONTransform = require('../lib/json_transform');
 
@@ -30,13 +30,13 @@ describe('JSONTransform', () => {
   context('passed 9 items JSON with count by 2 and expanding array', () => {
     it('flush 5 items', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/data_json.txt');
-      const jsonStream = new JSONTransform({ expandArray: true, countBy: 2 })
+      const jsonStream = new JSONTransform({ flatArray: true, countBy: 2 })
         .on('error', function(err) {
           assert.ifError(err);
           done();
         });
 
-      const writeStream = es.writeArray(function (err, array) {
+      const writeStream = StreamUtils.writeArray(function (err, array) {
         assert.deepEqual(array[0], [{ id: 1 }, { id: 2 }]);
         assert.deepEqual(array[1], [{ id: 3 }, { id: 4 }]);
         assert.deepEqual(array[2], [{ id: 5 }, { id: 6 }]);
@@ -52,7 +52,7 @@ describe('JSONTransform', () => {
   context('highWaterMark is less than item count of 1 JSON line', () => {
     it('reads rightly', (done) => {
       const readStream = fs.createReadStream(__dirname + '/fixtures/data/data_json.txt');
-      const jsonStream = new JSONTransform({ highWaterMark: 7, expandArray: true, countBy: 1 })
+      const jsonStream = new JSONTransform({ highWaterMark: 7, flatArray: true, countBy: 1 })
         .on('error', function(err) {
           assert.ifError(err);
           done();
@@ -70,7 +70,7 @@ describe('JSONTransform', () => {
           cb();
         });
 
-      const writeStream = es.writeArray(function (err, array) {
+      const writeStream = StreamUtils.writeArray(function (err, array) {
         assert.equal(array.length, 9);
         done();
       });
@@ -84,7 +84,7 @@ describe('JSONTransform', () => {
       it(`flush valid items through '${errMsg}'`, (done) => {
         const readStream = fs.createReadStream(__dirname + '/fixtures/data/multiline_json.txt', { highWaterMark });
         const jsonStream = new JSONTransform()
-        const writeStream = es.writeArray(function (err, array) {
+        const writeStream = StreamUtils.writeArray(function (err, array) {
           assert.deepEqual(array[0], { color: "red", value: "#f00" });
           assert.deepEqual(array[1], { color: "green", value: "#0f0" });
           assert.deepEqual(array[2], { color: "blue", value: "#00f" });

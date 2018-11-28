@@ -10,7 +10,7 @@ kinesis-stream-lambda
 
 * Easily reads a Lambda event of Kinesis Stream as a stream handling the chunk as Buffer
 * Supports KPL aggregation (set opts.isAgg true)
-* Provides KSL.parseJSON transform to handle items expanded array data in one record (set opts.expandArray true)
+* Provides KSL.parseJSON transform to handle items expanded array data in one record (set opts.flatArray true)
 * Node.js 6.10 or Later
 
 ## How to install
@@ -27,33 +27,59 @@ furthermore,
 $ npm install -save aws-kinesis-agg
 ```
 
-## Lambda handler example
+## Lambda handler examples
+
+### async/await style
 
 ```javascript
-const es = require('event-stream');
+const StreamUtils = require('@tilfin/stream-utils');
+const KSL = require('kinesis-stream-lambda');
+const PromisedLife = require('promised-lifestream');
+
+exports.handler = async function (event) {
+  console.log('event: ', JSON.stringify(event, null, 2));
+
+  const result = [];
+
+  await PromisedLife([
+    KSL.reader(event, { isAgg: false }),
+    KSL.parseJSON({ flatArray: false }),
+    StreamUtils.map(function(data, cb) {
+      result.push(data);
+      cb(null, data)
+    })
+  ])
+
+  console.dir(result);
+}
+```
+
+### normal style
+
+```javascript
+const StreamUtils = require('@tilfin/stream-utils');
 const KSL = require('kinesis-stream-lambda');
 
-
-exports.handler = function(event, context) {
+exports.handler = function (event, context, callback) {
   console.log('event: ', JSON.stringify(event, null, 2));
 
   const result = [];
   const stream = KSL.reader(event, { isAgg: false });
 
-  stream.on('end', function() {
+  stream.on('end', () => {
     console.dir(result);
-    context.done();
+    callback();
   });
 
-  stream.on('error', function(err) {
-    context.fail(err);
+  stream.on('error', err => {
+    callback(err);
   });
 
   stream
-  .pipe(KSL.parseJSON({ expandArray: false }))
-  .pipe(es.map(function(data, callback) {
+  .pipe(KSL.parseJSON({ flatArray: false }))
+  .pipe(StreamUtils.map(function(data, cb) {
     result.push(data);
-    callback(null, data)
+    cb(null, data)
   }));
 }
 ```
