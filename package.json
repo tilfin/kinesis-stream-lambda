@@ -1,11 +1,11 @@
 {
   "name": "kinesis-stream-lambda",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Readable stream in Lambda for Kinesis Stream",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha test/*.test.js",
-    "coverage": "./node_modules/.bin/istanbul cover _mocha -r test/*.test.js"
+    "coverage": "istanbul cover _mocha -r test/*.test.js"
   },
   "keywords": [
     "kinesis",
@@ -20,13 +20,13 @@
   },
   "devDependencies": {
     "@tilfin/stream-utils": "^0.6.0",
-    "aws-kinesis-agg": "^2.2.2",
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.12",
+    "aws-kinesis-agg": "^4.0.2",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
     "istanbul": "^0.4.5",
-    "mocha": "^3.0.2",
-    "mocha-lcov-reporter": "^1.2.0",
-    "through2": "^2.0.1"
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "through2": "^3.0.0"
   },
   "engines": {
     "node": ">=6"
