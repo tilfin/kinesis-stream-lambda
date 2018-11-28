@@ -30,28 +30,28 @@ $ npm install -save aws-kinesis-agg
 ## Lambda handler example
 
 ```javascript
-const es = require('event-stream');
+const StreamUtils = require('@tilfin/stream-utils');
 const KSL = require('kinesis-stream-lambda');
 
 
-exports.handler = function(event, context) {
+exports.handler = function(event, context, cb) {
   console.log('event: ', JSON.stringify(event, null, 2));
 
   const result = [];
   const stream = KSL.reader(event, { isAgg: false });
 
-  stream.on('end', function() {
+  stream.on('end', () => {
     console.dir(result);
-    context.done();
+    cb();
   });
 
-  stream.on('error', function(err) {
-    context.fail(err);
+  stream.on('error', err => {
+    cb(err);
   });
 
   stream
   .pipe(KSL.parseJSON({ expandArray: false }))
-  .pipe(es.map(function(data, callback) {
+  .pipe(StreamUtils.map(function(data, callback) {
     result.push(data);
     callback(null, data)
   }));
