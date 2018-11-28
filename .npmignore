@@ -1,6 +1,7 @@
 coverage
 example
 test
+tmp
 .gitignore
 .travis.yml
 Makefile
