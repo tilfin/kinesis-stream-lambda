@@ -19,10 +19,10 @@
     "url": "https://github.com/tilfin/kinesis-stream-lambda"
   },
   "devDependencies": {
+    "@tilfin/stream-utils": "^0.6.0",
     "aws-kinesis-agg": "^2.2.2",
     "chai": "^3.5.0",
     "coveralls": "^2.11.12",
-    "event-stream": "=3.3.4",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
     "mocha-lcov-reporter": "^1.2.0",

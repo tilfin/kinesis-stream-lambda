@@ -1,8 +1,6 @@
-'use strict';
+'use strict'
 
-const es = require('event-stream');
-const chai = require('chai');
-const assert = chai.assert;
+const { assert } = require('chai')
 
 const KLReadStream = require('../lib/read_stream');
 

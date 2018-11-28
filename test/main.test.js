@@ -1,8 +1,7 @@
-'use strict';
+'use strict'
 
-const es = require('event-stream');
-const chai = require('chai');
-const assert = chai.assert;
+const StreamUtils = require('@tilfin/stream-utils')
+const { assert } = require('chai')
 
 const KinesisLambda = require('../lib');
 
@@ -16,14 +15,11 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON())
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           assert.deepEqual(data, dataList.shift());
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
 
     it('reads two records', (done) => {
@@ -33,14 +29,11 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON())
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           assert.deepEqual(data, dataList.shift());
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
 
     const data3 = require('./fixtures/results/data-3');
@@ -52,14 +45,11 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON({ expandArray: true }))
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           assert.deepEqual(data, dataList.shift());
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
 
     it('reads one record with expanding array and counting by 2', (done) => {
@@ -69,15 +59,12 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON({ expandArray: true, countBy: 2 }))
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           const twoItems = dataList.splice(0, 2);
           assert.deepEqual(data, twoItems);
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
   });
 
@@ -92,14 +79,11 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON())
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           assert.deepEqual(data, dataList.shift());
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
 
     it('reads two records', (done) => {
@@ -109,14 +93,11 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON())
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           assert.deepEqual(data, dataList.shift());
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
 
     it('reads one records with counting by 3 items', (done) => {
@@ -126,15 +107,12 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON({ countBy: 3 }))
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           const threeItems = dataList.splice(0, 3);
           assert.deepEqual(data, threeItems);
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
 
     it('reads two records with counting by 4 items', (done) => {
@@ -144,15 +122,12 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(KinesisLambda.parseJSON({ countBy: 4 }))
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           const threeItems = dataList.splice(0, 4);
           assert.deepEqual(data, threeItems);
           callback(null, data)
-        }))
-        .on('end', function() {
-          assert.isOk(true);
-          done();
-        });
+        }));
+      readStream.on('end', done);
     });
   });
 
@@ -169,7 +144,7 @@ describe('KLReadStream', () => {
 
       readStream
         .pipe(jsonStream)
-        .pipe(es.map(function(data, callback) {
+        .pipe(StreamUtils.map(function(data, callback) {
           callback(null, data)
         }));
     });

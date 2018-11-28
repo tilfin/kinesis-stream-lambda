@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
+
+const StreamUtils = require('@tilfin/stream-utils')
+const { assert } = require('chai')
 
 const fs = require('fs');
-const es = require('event-stream');
 const through2 = require('through2');
-const chai = require('chai');
-const assert = chai.assert;
 
 const JSONTransform = require('../lib/json_transform');
 
@@ -36,7 +36,7 @@ describe('JSONTransform', () => {
           done();
         });
 
-      const writeStream = es.writeArray(function (err, array) {
+      const writeStream = StreamUtils.writeArray(function (err, array) {
         assert.deepEqual(array[0], [{ id: 1 }, { id: 2 }]);
         assert.deepEqual(array[1], [{ id: 3 }, { id: 4 }]);
         assert.deepEqual(array[2], [{ id: 5 }, { id: 6 }]);
@@ -70,7 +70,7 @@ describe('JSONTransform', () => {
           cb();
         });
 
-      const writeStream = es.writeArray(function (err, array) {
+      const writeStream = StreamUtils.writeArray(function (err, array) {
         assert.equal(array.length, 9);
         done();
       });
@@ -84,7 +84,7 @@ describe('JSONTransform', () => {
       it(`flush valid items through '${errMsg}'`, (done) => {
         const readStream = fs.createReadStream(__dirname + '/fixtures/data/multiline_json.txt', { highWaterMark });
         const jsonStream = new JSONTransform()
-        const writeStream = es.writeArray(function (err, array) {
+        const writeStream = StreamUtils.writeArray(function (err, array) {
           assert.deepEqual(array[0], { color: "red", value: "#f00" });
           assert.deepEqual(array[1], { color: "green", value: "#0f0" });
           assert.deepEqual(array[2], { color: "blue", value: "#00f" });
