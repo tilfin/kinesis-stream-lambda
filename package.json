@@ -1,6 +1,6 @@
 {
   "name": "kinesis-stream-lambda",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Readable stream in Lambda for Kinesis Stream",
   "main": "lib/index.js",
   "scripts": {
@@ -30,8 +30,5 @@
   },
   "engines": {
     "node": ">=6.10"
-  },
-  "dependencies": {
-    "promised-lifestream": "^0.7.0"
   }
 }

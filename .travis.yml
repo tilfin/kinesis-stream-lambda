@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - "6.10"
-  - "8"
+  - '6.10'
+  - '8.10'
+  - '10.10'
 script: 'make test-cov'
 after_success: 'make coveralls; make clean'

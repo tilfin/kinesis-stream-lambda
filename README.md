@@ -5,6 +5,7 @@ kinesis-stream-lambda
 [![Node](https://img.shields.io/node/v/kinesis-stream-lambda.svg)]()
 [![Build Status](https://travis-ci.org/tilfin/kinesis-stream-lambda.svg?branch=master)](https://travis-ci.org/tilfin/kinesis-stream-lambda)
 [![Coverage Status](https://coveralls.io/repos/github/tilfin/kinesis-stream-lambda/badge.svg?branch=master)](https://coveralls.io/github/tilfin/kinesis-stream-lambda?branch=master)
+[![dependencies Status](https://david-dm.org/tilfin/kinesis-stream-lambda/status.svg)](https://david-dm.org/tilfin/kinesis-stream-lambda)
 
 ## Features
 
