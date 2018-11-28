@@ -44,7 +44,7 @@ describe('KLReadStream', () => {
       const dataList = data3.concat();
 
       readStream
-        .pipe(KinesisLambda.parseJSON({ expandArray: true }))
+        .pipe(KinesisLambda.parseJSON({ flatArray: true }))
         .pipe(StreamUtils.map(function(data, callback) {
           assert.deepEqual(data, dataList.shift());
           callback(null, data)
@@ -58,7 +58,7 @@ describe('KLReadStream', () => {
       const dataList = data3.concat();
 
       readStream
-        .pipe(KinesisLambda.parseJSON({ expandArray: true, countBy: 2 }))
+        .pipe(KinesisLambda.parseJSON({ flatArray: true, countBy: 2 }))
         .pipe(StreamUtils.map(function(data, callback) {
           const twoItems = dataList.splice(0, 2);
           assert.deepEqual(data, twoItems);

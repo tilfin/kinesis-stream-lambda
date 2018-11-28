@@ -30,5 +30,8 @@
   },
   "engines": {
     "node": ">=6.10"
+  },
+  "dependencies": {
+    "promised-lifestream": "^0.7.0"
   }
 }
